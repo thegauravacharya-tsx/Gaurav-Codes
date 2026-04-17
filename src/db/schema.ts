@@ -30,3 +30,10 @@ export const newsletter = pgTable("newsletter", {
   email: text("email").notNull().unique(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 }); 
+
+export const requests = pgTable("requests", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  topic: text("topic").notNull(),
+  status: text("status").default("pending").notNull(), // pending, planned, recorded
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});

@@ -7,7 +7,9 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/componen
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { PlayCircle, Calendar, TrendingUp, Sparkles, Clock } from "lucide-react";
+import NewsletterForm from "@/components/NewsletterForm";
+import TopicRequestForm from "@/components/TopicRequestForm";
+import { PlayCircle, Calendar, TrendingUp, Sparkles, Clock, Mail } from "lucide-react";
 
 /**
  * Sidebar Component: Includes Upcoming Content and Community Polls
@@ -16,56 +18,47 @@ import { PlayCircle, Calendar, TrendingUp, Sparkles, Clock } from "lucide-react"
 function EngagementSidebar() {
   return (
     <aside className="space-y-6">
-      {/* Upcoming Videos Panel */}
+      
+      {/* 1. The Newsletter Card */}
       <Card className="bg-gray-900/50 border-gray-800">
-        <CardHeader>
+        <CardHeader className="pb-4">
           <CardTitle className="text-lg flex items-center gap-2 text-gray-100">
-            <Calendar className="h-5 w-5 text-blue-500" /> Upcoming Drops
+            <Mail className="h-5 w-5 text-blue-500" />
+            Developer Newsletter
           </CardTitle>
+          <p className="text-sm text-gray-400 mt-1">
+            Get high-signal architecture breakdowns delivered weekly.
+          </p>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="border-l-2 border-blue-500 pl-4 space-y-1">
-            <p className="text-sm font-medium text-gray-200">Stripe Webhooks Deep Dive</p>
-            <p className="text-xs text-gray-400">Premieres Friday at 10 AM EST</p>
-          </div>
-          <div className="border-l-2 border-gray-700 pl-4 space-y-1 opacity-70">
-            <p className="text-sm font-medium text-gray-200">React Compiler Explained</p>
-            <p className="text-xs text-gray-400">In Production</p>
-          </div>
+        <CardContent>
+          <NewsletterForm />
         </CardContent>
       </Card>
 
-      {/* Topic Poll Panel */}
+      {/* 2. The Topic Poll Card */}
       <Card className="bg-gradient-to-br from-gray-900 to-[#0a0a0a] border-gray-800">
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2 text-gray-100">
-            <TrendingUp className="h-5 w-5 text-blue-500" /> Topic Poll
+            <TrendingUp className="h-5 w-5 text-blue-500" />
+            Topic Poll
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-sm text-gray-400">What should we build next?</p>
           <div className="space-y-2">
-            <Button variant="outline" className="w-full justify-start border-gray-700 bg-transparent hover:bg-blue-500/10 hover:text-blue-500 hover:border-blue-500/50 transition-colors">
+            <Button variant="outline" className="w-full justify-start border-gray-700 bg-transparent hover:bg-blue-500/10 hover:text-blue-500 hover:border-blue-500/50">
               Agentic AI Workflows
             </Button>
-            <Button variant="outline" className="w-full justify-start border-gray-700 bg-transparent hover:bg-blue-500/10 hover:text-blue-500 hover:border-blue-500/50 transition-colors">
+            <Button variant="outline" className="w-full justify-start border-gray-700 bg-transparent hover:bg-blue-500/10 hover:text-blue-500 hover:border-blue-500/50">
               WebRTC Video Calling
             </Button>
           </div>
-          <div className="pt-4 mt-4 border-t border-gray-800 space-y-2">
-            <p className="text-xs text-gray-400 mb-2">Have another idea?</p>
-            <div className="flex gap-2">
-              <Input 
-                placeholder="Suggest a topic..." 
-                className="bg-gray-900 border-gray-800 text-gray-200 focus-visible:ring-blue-500" 
-              />
-              <Button size="icon" className="bg-blue-600 hover:bg-blue-500 text-white shrink-0">
-                <Sparkles className="h-4 w-4" />
-              </Button>
-            </div>
+          <div className="pt-4 mt-4 border-t border-gray-800">
+            <TopicRequestForm />
           </div>
         </CardContent>
       </Card>
+
     </aside>
   );
 }
